@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinépolis - La Capital del Cine</title>
+    <style>
+        /* CSS MÍNIMO Y BÁSICO PARA CINÉPOLIS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            color: #222222;
+            line-height: 1.6;
+        }
+
+        /* Encabezado y Navegación (Azul Marino y Amarillo) */
+        header {
+            background-color: #002244;
+            color: #ffffff;
+            border-bottom: 4px solid #ffcc00;
+            padding: 15px 20px;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ffcc00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: #ffcc00;
+            color: #002244;
+        }
+
+        /* Estructura Principal */
+        main {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #002244;
+            border-bottom: 3px solid #ffcc00;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        /* Secciones de Películas (Cartelera y Próximos) */
+        .pelicula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .pelicula-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pelicula-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .pelicula-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pelicula-titulo {
+            font-size: 16px;
+            font-weight: bold;
+            color: #002244;
+            margin-bottom: 5px;
+        }
+
+        .pelicula-detalles {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .pelicula-sinopsis {
+            font-size: 13px;
+            color: #444444;
+            margin-bottom: 15px;
+        }
+
+        .horarios {
+            background-color: #eef3f8;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #002244;
+            text-align: center;
+        }
+
+        /* Sección Club Cinépolis (Formularios) */
+        .club-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .form-box {
+            background-color: #f9fbfd;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .form-box h3 {
+            color: #002244;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #bbbbbb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: #002244;
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Tabla de Dulcería */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #002244;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: #002244;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #002244;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 4px solid #ffcc00;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ENCABEZADO Y NAVEGACIÓN -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">CINÉPOLIS <span>CLUB</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#cartelera">En Cartelera</a></li>
+                    <li><a href="#proximos">Próximos Estrenos</a></li>
+                    <li><a href="#club">Club Cinépolis</a></li>
+                    <li><a href="#dulceria">Dulcería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. CUERPO PRINCIPAL -->
+    <main>
+
+        <!-- SECCIÓN: EN CARTELERA -->
+        <section id="cartelera">
+            <h2>Películas en Cartelera</h2>
+            <div class="pelicula-grid">
+                
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=80" alt="Póster Dune 2">
+                    <div class="pelicula-info">
+                        <div>
+                            <div class="pelicula-titulo">Dune: Parte Dos</div>
+                            <div class="pelicula-detalles">Sci-Fi / Acción | Clasificación: B15</div>
+                            <p class="pelicula-sinopsis">Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia.</p>
+                        </div>
+                        <div class="horarios">
+                            Horarios: 14:30 | 17:15 | 20:00
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Póster Del Revés 2">
+                    <div class="pelicula-info">
+                        <div>
+                            <div class="pelicula-titulo">Del Revés 2 (Inside Out 2)</div>
+                            <div class="pelicula-detalles">Animación / Comedia | Clasificación: AA</div>
+                            <p class="pelicula-sinopsis">Regresa a la mente de Riley con nuevas emociones que llegan para poner patas arriba el cuartel general.</p>
+                        </div>
+                        <div class="horarios">
+                            Horarios: 13:00 | 15:20 | 17:40
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=400&q=80" alt="Póster Gladiador II">
+                    <div class="pelicula-info">
+                        <div>
+                            <div class="pelicula-titulo">Gladiador II</div>
+                            <div class="pelicula-detalles">Acción / Drama | Clasificación: C</div>
+                            <p class="pelicula-sinopsis">Lucius debe entrar al Coliseo para luchar por el destino de Roma ante la llegada de nuevos gobernantes.</p>
+                        </div>
+                        <div class="horarios">
+                            Horarios: 16:00 | 19:00 | 21:45
+                        </div>
+                    </div>
+                </article>
+
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Póster Deadpool & Wolverine">
+                    <div class="pelicula-info">
+                        <div>
+                            <div class="pelicula-titulo">Deadpool & Wolverine</div>
+                            <div class="pelicula-detalles">Acción / Comedia | Clasificación: C</div>
+                            <p class="pelicula-sinopsis">Wolverine se recupera de sus heridas cuando se cruza con Deadpool para derrotar a un enemigo común.</p>
+                        </div>
+                        <div class="horarios">
+                            Horarios: 15:00 | 17:45 | 20:30
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PRÓXIMOS ESTRENOS -->
+        <section id="proximos">
+            <h2>Próximos Estrenos</h2>
+            <div class="pelicula-grid">
+                
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=400&q=80" alt="Póster Avatar 3">
+                    <div class="pelicula-info">
+                        <div class="pelicula-titulo">Avatar 3: Fire and Ash</div>
+                        <div class="pelicula-detalles">Sci-Fi / Aventura</div>
+                        <p class="pelicula-sinopsis">Nuevas aventuras en el planeta Pandora explorando las tribus volcánicas.</p>
+                        <div class="horarios">Estreno: Diciembre 2026</div>
+                    </div>
+                </article>
+
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?auto=format&fit=crop&w=400&q=80" alt="Póster Wicked">
+                    <div class="pelicula-info">
+                        <div class="pelicula-titulo">Wicked: Parte 1</div>
+                        <div class="pelicula-detalles">Musical / Fantasía</div>
+                        <p class="pelicula-sinopsis">La historia jamás contada de las brujas del reino de Oz.</p>
+                        <div class="horarios">Estreno: Noviembre 2026</div>
+                    </div>
+                </article>
+
+                <article class="pelicula-card">
+                    <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=400&q=80" alt="Póster Moana 2">
+                    <div class="pelicula-info">
+                        <div class="pelicula-titulo">Moana 2</div>
+                        <div class="pelicula-detalles">Animación / Familiar</div>
+                        <p class="pelicula-sinopsis">Un nuevo viaje oceánico respondiendo al llamado de los ancestros.</p>
+                        <div class="horarios">Estreno: Noviembre 2026</div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CLUB CINÉPOLIS -->
+        <section id="club">
+            <h2>Club Cinépolis</h2>
+            <div class="club-container">
+                
+                <!-- Formulario de Inicio de Sesión -->
+                <div class="form-box">
+                    <h3>Ingresar a mi cuenta Club</h3>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="tarjeta">Número de Tarjeta Club Cinépolis (16 dígitos):</label>
+                            <input type="text" id="tarjeta" name="tarjeta" placeholder="Ej. 1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit">Iniciar Sesión</button>
+                    </form>
+                </div>
+
+                <!-- Formulario de Registro -->
+                <div class="form-box">
+                    <h3>¿Aún no tienes tarjeta? Regístrate</h3>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre y Apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Crear Contraseña:</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit">Obtener Tarjeta Digital</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: DULCERÍA -->
+        <section id="dulceria">
+            <h2>Dulcería & Combos</h2>
+            <p style="margin-bottom: 15px; font-size: 14px;">Disfruta de tus productos favoritos comprándolos directamente antes de ingresar a la sala.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto / Combo</th>
+                        <th>Descripción</th>
+                        <th>Precio (MXN)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Combo Cuates</strong></td>
+                        <td>2 Refrescos grandes + Palomitas grandes Mantequilla + Nachos con queso</td>
+                        <td class="precio">$265.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combo Individual</strong></td>
+                        <td>1 Refresco grande + Palomitas grandes Mantequilla</td>
+                        <td class="precio">$145.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combo Pareja VIP</strong></td>
+                        <td>2 Bebidas VIP + Palomitas VIP + 2 Hot Dogs Tradicionales</td>
+                        <td class="precio">$380.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Palomitas Grandes</strong></td>
+                        <td>Mantequilla, Chile, Acanaladas o Caramelizadas</td>
+                        <td class="precio">$95.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Refresco Grande</strong></td>
+                        <td>Sabores varios 946 ml</td>
+                        <td class="precio">$75.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <section id="contacto">
+            <h2>Contacto y Atención a Clientes</h2>
+            <div class="form-box" style="max-width: 600px; margin: 0 auto;">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="contacto-nombre">Nombre:</label>
+                        <input type="text" id="contacto-nombre" name="contacto-nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contacto-email">Correo Electrónico:</label>
+                        <input type="email" id="contacto-email" name="contacto-email" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o Sugerencia:</label>
+                        <input type="text" id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required>
+                    </div>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <p>&copy; 2026 Cinépolis de México, S.A. de C.V. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px;">
+            <a href="#cartelera">Cartelera</a> |
+            <a href="#club">Club Cinépolis</a> |
+            <a href="#">Términos y Condiciones</a> |
+            <a href="#">Aviso de Privacidad</a>
+        </p>
+    </footer>
+
+</body>
+</html>
